@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTEGE+ | Tecnologia que protege</title>
+<!-- Link para o CSS -->
+<link rel="stylesheet" href="style.css">
+<!-- Ícones FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+<div class="logo">
+<i class="fa-solid fa-shield-halved"></i> PROTEGE<span>+</span>
+</div>
+<nav>
+<a href="#beneficios">Benefícios</a>
+<a href="#simulacao">Simulação ao Vivo</a>
+<a href="#recursos">Recursos</a>
+</nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<h1>Seu assistente inteligente de proteção contra enchentes.</h1>
+<p>Monitoramento por satélite, orientação inteligente e proteção em tempo real. Porque a tecnologia deve estar a serviço da vida!</p>
+<a href="#simulacao" class="btn-primary"><i class="fa-solid fa-play"></i> Testar Simulação Agora</a>
+</div>
+<div class="hero-image">
+<div class="mockup-phone">
+<div class="mockup-screen">
+<img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?auto=format&fit=crop&w=400&q=80" alt="Mapa de chuva">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Benefícios (Novo) -->
+<section id="beneficios" class="benefits">
+<h2>Por que ter o PROTEGE+ no seu celular?</h2>
+<div class="grid-cards">
+<div class="card benefit-card">
+<i class="fa-solid fa-heart-pulse icon-red"></i>
+<h3>Salva Vidas</h3>
+<p>Antecipação de riscos e orientações claras que ajudam você e sua família a saírem de áreas de perigo a tempo.</p>
+</div>
+<div class="card benefit-card">
+<i class="fa-solid fa-brain icon-blue"></i>
+<h3>Tranquilidade Mental</h3>
+<p>Não dependa apenas do noticiário. Receba alertas diretamente no seu celular sobre a sua rua e sua casa.</p>
+</div>
+<div class="card benefit-card">
+<i class="fa-solid fa-hand-holding-heart icon-yellow"></i>
+<h3>Orientação Prática</h3>
+<p>O que fazer? Onde ir? O que proteger? O app responde essas perguntas passo a passo em momentos de desespero.</p>
+</div>
+</div>
+</section>
+
+<!-- Simulação Interativa (O coração do pedido) -->
+<section id="simulacao" class="simulation-section">
+<div class="sim-text">
+<h2>Veja o PROTEGE+ em Ação</h2>
+<p>Clique no botão abaixo para simular a chegada de uma tempestade severa na sua região e veja como o aplicativo reagiria para te proteger.</p>
+<button id="btn-simular" class="btn-danger big-btn" onclick="iniciarSimulacao()">
+<i class="fa-solid fa-cloud-showers-heavy"></i> Simular Chuva Forte
+</button>
+<button id="btn-reset" class="btn-secondary" onclick="resetarSimulacao()" style="display: none; margin-top: 15px;">
+<i class="fa-solid fa-rotate-right"></i> Reiniciar Simulação
+</button>
+</div>
+
+<!-- O Celular da Simulação -->
+<div class="sim-phone-container">
+<div class="mockup-phone sim-phone">
+<div class="notch"></div>
+<div class="sim-screen" id="sim-screen">
+<!-- Tela Inicial do App (Estado Neutro) -->
+<div id="screen-normal" class="app-screen active">
+<div class="app-header">
+<i class="fa-solid fa-shield-halved"></i> PROTEGE+
+</div>
+<div class="app-body center-content">
+<i class="fa-solid fa-map-location-dot icon-blue huge-icon"></i>
+<h3>Monitorando sua região</h3>
+<p class="text-muted">Nenhum risco iminente detectado no momento.</p>
+<div class="status-badge safe">Céu Limpo</div>
+</div>
+</div>
+
+<!-- Tela 1: Alerta de Chuva -->
+<div id="screen-alert" class="app-screen">
+<div class="app-header bg-yellow">
+<i class="fa-solid fa-triangle-exclamation"></i> Alerta Meteorológico
+</div>
+<div class="app-body">
+<div class="radar-map">
+<div class="radar-ping"></div>
+</div>
+<h3>Chuva Forte se Aproximando!</h3>
+<p>Tempestade severa prevista para atingir sua localização nas próximas <strong>1 hora</strong>.</p>
+<ul class="checklist">
+<li><i class="fa-solid fa-check-circle"></i> Mantenha-se em local coberto.</li>
+<li><i class="fa-solid fa-check-circle"></i> Evite sair de casa.</li>
+</ul>
+</div>
+</div>
+
+<!-- Tela 2: Alerta de Enchente -->
+<div id="screen-flood" class="app-screen">
+<div class="app-header bg-red blinking">
+<i class="fa-solid fa-water"></i> ALERTA DE ENCHENTE
+</div>
+<div class="app-body">
+<img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=300&q=80" alt="Enchente" class="flood-img">
+<h3>A água está subindo na sua região!</h3>
+<div class="instructions">
+<p><strong>O que fazer agora:</strong></p>
+<p>1. Suba para um local mais alto.</p>
+<p>2. Proteja documentos e eletrônicos.</p>
+<p>3. Não esqueça dos seus pets.</p>
+</div>
+<button class="btn-danger full-width" onclick="mostrarSocorro()">Acionar Alerta Máximo</button>
+</div>
+</div>
+
+<!-- Tela 3: Socorro (Alerta Máximo) -->
+<div id="screen-sos" class="app-screen">
+<div class="app-header bg-red">
+<i class="fa-solid fa-siren"></i> ALERTA MÁXIMO ATIVADO
+</div>
+<div class="app-body center-content">
+<div class="sos-ring">
+<i class="fa-solid fa-phone-volume"></i>
+</div>
+<h3>Socorro solicitado!</h3>
+<p>Sua localização foi enviada para as equipes de resgate.</p>
+<div class="emergency-numbers">
+<div class="emg-btn"><i class="fa-solid fa-car"></i> Polícia</div>
+<div class="emg-btn"><i class="fa-solid fa-truck-medical"></i> Ambulância</div>
+<div class="emg-btn"><i class="fa-solid fa-helicopter"></i> Resgate</div>
+</div>
+<p class="text-muted" style="margin-top: 15px; font-size: 0.8rem;">Mantenha a calma. A ajuda está a caminho.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- Recursos (Mantido e ajustado) -->
+<section id="recursos" class="features">
+<h2>Tecnologia a seu favor</h2>
+<div class="grid-cards">
+<div class="card">
+<div class="icon blue"><i class="fa-solid fa-satellite-dish"></i></div>
+<h3>Monitoramento via Satélite</h3>
+<p>Dados em tempo real sobre a aproximação de tempestades e áreas de risco na sua rua.</p>
+</div>
+<div class="card">
+<div class="icon blue"><i class="fa-solid fa-house-chimney-window"></i></div>
+<h3>Análise da Residência</h3>
+<p>Descubra os locais mais seguros da sua casa e o que proteger antes da água subir.</p>
+</div>
+<div class="card">
+<div class="icon red"><i class="fa-solid fa-tower-broadcast"></i></div>
+<h3>Alerta Máximo</h3>
+<p>Acione ajuda em emergências. Solicite socorro à Polícia, Ambulância ou Resgate com sua localização.</p>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2024 PROTEGE+. Tecnologia que protege. Vidas em primeiro lugar.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
